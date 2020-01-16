@@ -3,8 +3,8 @@ var React = require('react');
 
 class showPokemon extends React.Component {
   render() {
-     let linkDelete= "../../"+this.props.id+"/delete";
-     let linkEdit= "../../"+this.props.id+"/edit";
+     let linkDelete= "../pokemon/"+this.props.id+"/delete";
+     let linkEdit= "../pokemon/"+this.props.id+"/edit";
      console.log(this.props.id);
     return (
       <html>

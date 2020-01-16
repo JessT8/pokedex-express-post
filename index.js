@@ -76,7 +76,7 @@ const edit = (request,response)=>{
         if(idIndex(pokemonIndex, obj)!== undefined){
             pokemonIndex = idIndex(pokemonIndex, obj);
             let currentPokemon = obj.pokemon[pokemonIndex];
-        response.render("Edit",currentPokemon);}
+        response.render("edit",currentPokemon);}
         else{
             response.send('Index does not exist');
         }
@@ -106,10 +106,11 @@ const writeEdit = (request,response)=>{
         obj.pokemon[pokemonIndex].num = contents.num;
         obj.pokemon[pokemonIndex].weight = contents.weight;
         obj.pokemon[pokemonIndex].height = contents.height;
+        const data = {pokemonList : obj.pokemon}
         console.log("In write edit");
     jsonfile.writeFile(file, obj, (err) => {
       console.error(err);
-            response.render("Home");
+        response.render("Home", data)
         });
     });
 }
@@ -180,10 +181,10 @@ const add = (request, response)=>{
  */
  //home
 app.get('/pokemon/home/:sort',sort);
-app.get('/pokemon/home/pokemon/:id',showPokemon);
+app.get('/pokemon/:id',showPokemon);
  //edit pokemon
 app.get('/pokemon/:id/edit',edit);
-app.put('/pokemon/:id',writeEdit);
+app.put('/pokemon/:id/edit',writeEdit);
 app.get('/pokemon/:id/delete', showDeletePokemon)
 app.get('/pokemon/new', (request,response) => {
     console.log("sending add form");
@@ -206,4 +207,4 @@ app.post('/pokemon',add);
  * Listen to requests on port 3000
  * ===================================
  */
-app.listen(3000, () => console.log('~~~ Tuning in to the waves of port 3000 ~~~'));
+app.listen(3000, () => console.log('~~~HELLO NEW BRANCH ~~~'));
